@@ -3,7 +3,7 @@ var scl = 20;
 var food;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(600, 500);
   snake = new Snake();
   food = new Food();
 
