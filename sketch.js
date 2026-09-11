@@ -5,7 +5,7 @@ var snake;
 // Mobile touch vectors
 let touchStartX = 0;
 let touchStartY = 0;
-let gameIsPlaying = true; 
+let gameIsPlaying = true;   
 
 function setup() {
   // 1. FIXED GRID SIZE: Hardcode your internal game dimensions (e.g., 400x400)
