@@ -12,7 +12,7 @@ class Snake {
     if (x !== 0 && this.xspeed === -x) return;
     if (y !== 0 && this.yspeed === -y) return;
     this.xspeed = x;
-    this.yspeed = y;
+    this.yspeed = y;  
   }
 
   eat(pos) {
