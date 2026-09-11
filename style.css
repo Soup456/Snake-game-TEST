@@ -15,7 +15,6 @@ p {
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0; /* Gives a clean background behind the game grid */
   overflow: hidden;          /* CRITICAL: Stops the mobile browser from bouncing when you swipe */
   position: fixed;           /* Locks the viewport on mobile devices */
   width: 100%;
