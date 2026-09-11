@@ -8,11 +8,9 @@ let touchStartY = 0;
 let gameIsPlaying = true; 
 
 function setup() {
-  let minDimension = min(windowWidth, windowHeight) * 0.85; 
-  let totalGridCells = floor(minDimension / scl);
-  let canvasSize = totalGridCells * scl;
-
-  if (canvasSize > 500) canvasSize = 500; 
+  // 1. FIXED GRID SIZE: Hardcode your internal game dimensions (e.g., 400x400)
+  // This gives you a consistent grid of exactly 20x20 tiles (400 / 20 = 20)
+  let canvasSize = 400; 
 
   // Store the canvas reference
   let canvas = createCanvas(canvasSize, canvasSize);
@@ -21,11 +19,19 @@ function setup() {
   canvas.elt.tabIndex = 0;
   canvas.elt.focus();
   
+  // 2. CSS RESPONSIEVNESS: Let CSS stretch the fixed grid cleanly on mobile
   let canvasElement = document.querySelector('canvas');
   if (canvasElement) {
     canvasElement.style.margin = '20px auto';
     canvasElement.style.display = 'block';
     canvasElement.style.outline = 'none'; // Removes the default browser focus border
+    
+    // 👇 ADD THESE THREE LINES: Stretches the game safely on your phone screen
+    canvasElement.style.maxWidth = '90vw';
+    canvasElement.style.maxHeight = '70vh'; // Lowered slightly so text fits above it
+    canvasElement.style.width = '100%';
+    canvasElement.style.height = '100%';    // Changed 'auto' to '100%'
+    canvasElement.style.objectFit = 'contain'; // 🌟 ADD THIS LINE to fix the stretching!
   }
 
   snake = new Snake();
@@ -43,18 +49,14 @@ function mousePressed() {
   }
 }
 
+// 3. REMOVE RESIZE LOGIC: Don't change internal pixels when the screen shifts
 function windowResized() {
-  let minDimension = min(windowWidth, windowHeight) * 0.85;
-  let totalGridCells = floor(minDimension / scl);
-  let canvasSize = totalGridCells * scl;
-  if (canvasSize > 500) canvasSize = 500;
-  resizeCanvas(canvasSize, canvasSize);
+  // We leave this empty because CSS handles scaling automatically now!
 }
-
 function draw() {
   background(255);
 
-  stroke(235); 
+  stroke(90); 
   strokeWeight(1);
   for (let x = 0; x < width; x += scl) {
     line(x, 0, x, height);
