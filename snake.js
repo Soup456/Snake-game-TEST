@@ -5,7 +5,7 @@ class Snake {
     this.xspeed = 1;
     this.yspeed = 0;
     this.total = 0;
-    this.tail = [];   
+    this.tail = []; 
   }
 
   eat(pos) {
