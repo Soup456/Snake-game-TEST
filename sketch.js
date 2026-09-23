@@ -28,7 +28,7 @@ function draw() {
     food.pickLocation();
   }
 
-  snake.update();
+  snake.update();  
   food.show();  
   snake.show();
   snake.death();
